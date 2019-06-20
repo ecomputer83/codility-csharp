@@ -12,10 +12,9 @@ class Solution
     public int solution(int[] A)
     {
         // write your code in C# 6.0 with .NET 4.5 (Mono)
+        var uniqueInt = A.GroupBy(x => x).Where(x => (x.Count() == 1 || x.Count() % 2 == 1)).Select(x => x.Key).ToList();
         
-        var uniqueInt = A.GroupBy(x => x).Where(x => x.Count() == 1).Select(x => x.Key).ToList();
-        
-        return uniqueInt[0];
+        return (uniqueInt.Count > 0) ? uniqueInt[0] :  0;
     }
 }
 
